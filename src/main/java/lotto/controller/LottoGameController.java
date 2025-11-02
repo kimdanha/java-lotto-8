@@ -52,6 +52,7 @@ public class LottoGameController {
         while (true) {
             try {
                 String input = InputView.inputWinningNumbers();
+                System.out.println();
                 return new Lotto(StringConverter.toIntList(input));
             } catch (Exception e) {
                 OutputView.printError(e.getMessage());
