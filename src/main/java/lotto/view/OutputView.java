@@ -39,7 +39,7 @@ public class OutputView {
             );
         }
 
-        System.out.printf("총 수익률은 %.1f%%%s%n", resultDto.getProfitRate(), "입니다.");
+        System.out.printf("총 수익률은 %,.1f%%%s%n", resultDto.getProfitRate(), "입니다.");
     }
 
     public static void printError(String message) {
