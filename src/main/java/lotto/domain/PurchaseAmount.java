@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.config.ErrorMessage;
+import lotto.config.LottoConfig;
 
 public class PurchaseAmount {
 
@@ -17,18 +18,18 @@ public class PurchaseAmount {
     }
 
     private void validateMinimum(int amount) {
-        if (amount < 1000) {
+        if (amount < LottoConfig.LOTTO_PRICE) {
             throw new IllegalArgumentException(ErrorMessage.PURCHASE_MIN_ERROR.getMessage());
         }
     }
 
     private void validateUnit(int amount) {
-        if (amount % 1000 != 0) {
+        if (amount % LottoConfig.LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ErrorMessage.PURCHASE_UNIT_ERROR.getMessage());
         }
     }
 
     public int getTicketCount() {
-        return amount / 1000;
+        return amount / LottoConfig.LOTTO_PRICE;
     }
 }
