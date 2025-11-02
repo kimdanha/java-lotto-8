@@ -26,6 +26,6 @@ public class LottoResult {
                 .sum();
 
         double rate = (double) totalWinningMoney / (amount.getTicketCount() * 1000) * 100;
-        return Math.round(rate * 100.0) / 100.0;
+        return Math.round(rate * 10.0) / 10.0;
     }
 }
