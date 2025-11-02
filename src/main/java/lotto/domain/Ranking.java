@@ -35,4 +35,8 @@ public enum Ranking {
         if (matchCount == 3) return FIFTH;
         return NOTHING;
     }
+
+    public boolean isNothing() {
+        return this == NOTHING;
+    }
 }
