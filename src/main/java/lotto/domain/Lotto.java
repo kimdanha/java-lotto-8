@@ -45,4 +45,10 @@ public class Lotto {
         return numbers.contains(number);
     }
 
+    public int countMatchingNumbers(Lotto other) {
+        return (int) numbers.stream()
+                .filter(other::contains)
+                .count();
+    }
+
 }
