@@ -40,4 +40,9 @@ public class Lotto {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_RANGE_ERROR.getMessage());
         }
     }
+
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
+
 }
