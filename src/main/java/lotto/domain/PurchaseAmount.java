@@ -32,4 +32,8 @@ public class PurchaseAmount {
     public int getTicketCount() {
         return amount / LottoConfig.LOTTO_PRICE;
     }
+
+    public int getValue() {
+        return amount;
+    }
 }
