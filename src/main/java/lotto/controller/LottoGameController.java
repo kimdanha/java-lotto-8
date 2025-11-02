@@ -11,6 +11,8 @@ import lotto.view.OutputView;
 import java.util.List;
 import java.util.Map;
 
+import static lotto.util.StringConverter.validateNumber;
+
 public class LottoGameController {
 
     private final LottoService lottoService;
@@ -42,6 +44,7 @@ public class LottoGameController {
         while (true) {
             try {
                 String input = InputView.inputPurchaseAmount();
+                validateNumber(input);
                 return new PurchaseAmount(Integer.parseInt(input));
             } catch (Exception e) {
                 OutputView.printError(e.getMessage());
@@ -64,6 +67,7 @@ public class LottoGameController {
         while (true) {
             try {
                 String input = InputView.inputBonusNumber();
+                validateNumber(input);
                 return new BonusNumber(Integer.parseInt(input), winningLotto);
             } catch (Exception e) {
                 OutputView.printError(e.getMessage());

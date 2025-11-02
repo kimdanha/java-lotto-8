@@ -23,7 +23,7 @@ public class StringConverter {
         }
     }
 
-    private static void validateNumber(String token) {
+    public static void validateNumber(String token) {
         if (!token.matches("\\d+")) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_INPUT.getMessage());
         }
