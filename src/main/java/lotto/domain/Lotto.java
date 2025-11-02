@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.config.ErrorMessage;
+import lotto.config.LottoConfig;
 
 import java.util.HashSet;
 import java.util.List;
@@ -20,7 +21,7 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LottoConfig.LOTTO_SIZE) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_SIZE_ERROR.getMessage());
         }
     }
@@ -33,7 +34,7 @@ public class Lotto {
 
     private void validateRange(List<Integer> numbers) {
         boolean isOutOfRange = numbers.stream()
-                .anyMatch(num -> num < 1 || num > 45);
+                .anyMatch(num -> num < LottoConfig.MIN_NUMBER || num > LottoConfig.MAX_NUMBER);
 
         if (isOutOfRange) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_RANGE_ERROR.getMessage());
