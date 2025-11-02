@@ -4,21 +4,28 @@ import java.util.Map;
 
 public class LottoResult {
 
-    private final Map<Ranking, Integer> resultMap;
+    private final Map<Ranking, Integer> rankingCount;
+    private final double profitRate;
 
-    public LottoResult(Map<Ranking, Integer> resultMap) {
-        this.resultMap = resultMap;
+    public LottoResult(Map<Ranking, Integer> rankingCount, PurchaseAmount amount) {
+        this.rankingCount = rankingCount;
+        this.profitRate = calculateProfitRate(amount);
     }
 
-    public long getTotalPrize() {
-        return resultMap.entrySet().stream()
-                .mapToLong(entry -> entry.getKey().getPrizeMoney() * entry.getValue())
+    public Map<Ranking, Integer> getRankingCount() {
+        return rankingCount;
+    }
+
+    public double getProfitRate() {
+        return profitRate;
+    }
+
+    private double calculateProfitRate(PurchaseAmount amount) {
+        long totalWinningMoney = rankingCount.entrySet().stream()
+                .mapToLong(e -> e.getKey().getPrizeMoney() * e.getValue())
                 .sum();
-    }
 
-    public double calculateProfitRate(PurchaseAmount amount) {
-        long totalPrize = getTotalPrize();
-        double spent = amount.getValue();
-        return (totalPrize / spent) * 100;
+        double rate = (double) totalWinningMoney / (amount.getTicketCount() * 1000) * 100;
+        return Math.round(rate * 10.0) / 10.0;
     }
 }

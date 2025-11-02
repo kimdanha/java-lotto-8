@@ -1,5 +1,6 @@
 package lotto.dto;
 
+import lotto.domain.LottoResult;
 import lotto.domain.Ranking;
 import java.util.Map;
 
@@ -19,5 +20,12 @@ public class LottoResultDto {
 
     public double getProfitRate() {
         return profitRate;
+    }
+
+    public static LottoResultDto from(LottoResult lottoResult) {
+        return new LottoResultDto(
+                lottoResult.getRankingCount(),
+                lottoResult.getProfitRate()
+        );
     }
 }

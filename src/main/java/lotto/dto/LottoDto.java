@@ -1,5 +1,7 @@
 package lotto.dto;
 
+import lotto.domain.Lotto;
+
 import java.util.List;
 
 public class LottoDto {
@@ -12,5 +14,11 @@ public class LottoDto {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    public static List<LottoDto> from(List<Lotto> lottos) {
+        return lottos.stream()
+                .map(lotto -> new LottoDto(lotto.getNumbers()))
+                .toList();
     }
 }
