@@ -22,13 +22,12 @@ class LottoResultTest {
         counts.put(Ranking.FIRST, 1);
         counts.put(Ranking.THIRD, 1);
 
-        LottoResult result = new LottoResult(counts);
         PurchaseAmount amount = new PurchaseAmount(10000);
-
-        double profitRate = result.calculateProfitRate(amount);
+        LottoResult result = new LottoResult(counts, amount);
 
         double expected = ((2_000_000_000L + 1_500_000L) / 10000.0) * 100;
+        expected = Math.round(expected * 10.0) / 10.0;
 
-        assertThat(profitRate).isEqualTo(expected);
+        assertThat(result.getProfitRate()).isEqualTo(expected);
     }
 }

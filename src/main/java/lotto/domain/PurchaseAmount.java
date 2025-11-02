@@ -33,7 +33,7 @@ public class PurchaseAmount {
         return amount / LottoConfig.LOTTO_PRICE;
     }
 
-    public int getValue() {
+    public int getAmount() {
         return amount;
     }
 }
