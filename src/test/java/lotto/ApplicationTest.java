@@ -49,7 +49,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_후_재입력_테스트() {
         assertSimpleTest(() -> {
-            run("1000j", "8000");
+            run("1000j", "8000", "1,2,3,4,5,6", "7");
 
             assertThat(output()).contains(
                     "[ERROR] 입력값은 숫자여야 합니다.",
