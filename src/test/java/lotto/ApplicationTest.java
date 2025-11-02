@@ -47,10 +47,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 예외_후_재입력_테스트() {
         assertSimpleTest(() -> {
-            runException("1000j");
-            assertThat(output()).contains(ERROR_MESSAGE);
+            run("1000j", "8000");
+
+            assertThat(output()).contains(
+                    "[ERROR] 입력값은 숫자여야 합니다.",
+                    "8개를 구매했습니다."
+            );
         });
     }
 
